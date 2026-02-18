@@ -5,16 +5,8 @@ import { UpdateJobDto } from './dto/update-job.dto';
 
 @Injectable()
 export class JobsService {
-  constructor(private prisma: PrismaService) {} // ← Vous avez bien "prisma"
+  constructor(private prisma: PrismaService) {}
 
-  // Supprimez cette méthode (doublon inutile)
-  // async createJob(createJobDto: CreateJobDto) {
-  //   const { title, description, company, location, jobType } = createJobDto;
-  //   const job = await this.prismaService.create(createJobDto); // ← ERREUR ICI
-  //   return { job };
-  // }
-
-  // Gardez seulement celle-ci
   async create(createJobDto: CreateJobDto) {
     return this.prisma.job.create({
       data: {
